@@ -1,0 +1,48 @@
+
+{% load static %}
+{% load crispy_forms_tags %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+</head>
+<style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+</style>
+
+
+<body class="text-center">
+
+    <main class="form-signin">
+        <form method="post">
+            <img class="mb-4" src="{% static 'assets/login_icon.png' %}" alt="" width="90" height="60">
+            <h1 class="h3 mb-3 fw-normal">Hoş geldiňiz!</h1>
+            {% csrf_token %}
+
+            <div class="form-floating">
+                {{ form.username|as_crispy_field }}
+            </div>
+            <div class="form-floating">
+                {{ form.password|as_crispy_field }}
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Giriň</button>
+        </form>
+    </main>
+
+
+</body>

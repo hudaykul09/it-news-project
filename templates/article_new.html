@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1  class="text-center text-success mt-2">Täze makala</h1>
+    <form class="row gy-2 gx-3 align-items-center" action="" method="post"
+          enctype="multipart/form-data">{% csrf_token %}
+        {{ form.media }}
+        {{ form|crispy }}
+        <button class="btn btn-outline-success mt-2" type="submit">Ýatda saklamak</button>
+    </form>
+{% endblock content %}

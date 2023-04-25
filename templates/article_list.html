@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ Postlar }}{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="container my-5">
+                <div class="row flex-lg-row-reverse align-items-center gy-3 py-5 rounded-3 border shadow">
+                    <div class="col-10 col-sm-8 col-lg-6">
+                        <img src="{% static 'assets/psihologiya.jpg' %}" class=" mx-lg-auto img-fluid shadow"
+                             alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                    </div>
+                    <div class="col-lg-6">
+                        <h1 class="display-5 fw-bold lh-1 mb-3">Günüň habary</h1>
+                        <p class="lead">Bu ýerik esasy makalany ýazyp bileris! Bu ýerik esasy makalany ýazyp bileris! Bu ýerik esasy makalany ýazyp bileris! Bu ýerik esasy makalany ýazyp bileris! Bu ýerik esasy makalany ýazyp bileris!
+                        Bu ýerik esasy makalany ýazyp bileris! Bu ýerik esasy makalany ýazyp bileris! Bu ýerik esasy makalany ýazyp bileris! Bu ýerik esasy makalany ýazyp bileris! </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <!-- Blog post-->
+                {% for article in object_list %}
+                    <div class="card mb-4 shadow">
+                        <a href="{% url 'article_detail' article.pk %}"><img class="card-img-top" src="{{ article.photo.url }}"
+                                          alt="{{ article.title }}"/></a>
+                        <div class="card-body">
+{#                            <div class="btn-group btn-group-sm">#}
+{#                                {% for categor in article.category.all %}#}
+{#                                    <a href="#" class="btn btn-outline-light"#}
+{#                                       style="background-color: #347b98">{{ categor.name }}</a>#}
+{#                                {% endfor %}#}
+{#                            </div>#}
+                            <div class="small text-muted">{{ article.date }}</div>
+                            {#                    <div class="small text-muted">Awtory: {{ article.author }}</div>#}
+                            <a href="{% url 'article_detail' article.pk %}"><h2 class="card-title">{{ article.title }}</h2></a>
+                            <p class="card-text">{{ article.summary }}</p>
+                            <a class="btn btn-sm" style="background-color: #b2d732" href="{% url 'article_detail' article.pk %}">giňişleýin →</a>
+                        </div>
+                    </div>
+                {% endfor %}
+                <!-- Pagination-->
+                <nav aria-label="Pagination">
+                    <hr class="my-0"/>
+                    <ul class="pagination justify-content-center my-4">
+                        <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"
+                                                          aria-disabled="true">Soňky</a></li>
+                        <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#!">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#!">3</a></li>
+                        <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
+                        <li class="page-item"><a class="page-link" href="#!">15</a></li>
+                        <li class="page-item"><a class="page-link" href="#!">Öňki</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            {% include 'include/widget.html' %}
+
+        </div>
+    </div>
+{% endblock content %}
+
